@@ -13,21 +13,24 @@ This project demonstrates a real-time **Blue-Green Deployment architecture** usi
 
 ---
 ## Project Folder Structure
+------------------------
 
 aws-blue-green-deployment/
 │
 ├── README.md
 ├── architecture.png
+│
 ├── screenshots/
 │   ├── alb-config.png
 │   ├── alb-resource-map.png
-│   ├── alb-rule80-20.png   
-|   ├── alb-rule-100.png
+│   ├── alb-rule80-20.png
+│   ├── alb-rule-100.png
 │   ├── blue-green-instances.png
 │   ├── blue-green-launch-template.png
 │   ├── target-groups.png
 │   ├── user-data-blue.png
-│   └── user-data-green.png
+│   ├── user-data-green.png
+│
 └── user-data/
     ├── blue-userdata.sh
     └── green-userdata.sh
