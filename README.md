@@ -99,7 +99,7 @@ aws-blue-green-deployment/
 
 ---
 
-## 📈 Improvements & Alternatives
+## 📈 Advanced Improvements
 
 - **Weighted Routing:** Gradual traffic shift using ALB rules  
 - **Automation:** Integrate with CodeDeploy or CodePipeline  
