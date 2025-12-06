@@ -16,10 +16,8 @@ This project demonstrates a real-time **Blue-Green Deployment architecture** usi
 ------------------------
 
 aws-blue-green-deployment/
-│
 ├── README.md
 ├── architecture.png
-│
 ├── screenshots/
 │   ├── alb-config.png
 │   ├── alb-resource-map.png
@@ -30,10 +28,9 @@ aws-blue-green-deployment/
 │   ├── target-groups.png
 │   ├── user-data-blue.png
 │   ├── user-data-green.png
-│
-└── user-data/
-    ├── blue-userdata.sh
-    └── green-userdata.sh
+├── user-data/
+│   ├── blue-userdata.sh
+│   ├── green-userdata.sh
 
 ---
 
