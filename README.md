@@ -35,9 +35,9 @@ aws-blue-green-deployment/
 ```
 ---
 
-## 🧱 Architecture Components
+# 🧱 Architecture Components
 
-- **Application Load Balancer (ALB):** Single entry point for client traffic.
+- **Application Load Balancer (ALB):** Acts as the single entry point for client traffic.
 - **Target Groups (TG):**
   - `tg-frontend-blue` → linked to `asg-frontend-blue`
   - `tg-frontend-green` → linked to `asg-frontend-green`
@@ -45,39 +45,48 @@ aws-blue-green-deployment/
   - `asg-frontend-blue` → uses `lt-frontend-blue-v1`
   - `asg-frontend-green` → uses `lt-frontend-green-v2`
 - **Launch Templates (LT):**
-  - `lt-frontend-blue-v1` → installs HexaShop via user data
-  - `lt-frontend-green-v2` → installs Liberty Market via user data
+  - `lt-frontend-blue-v1` → installs **HexaShop** via `user-data/blue-userdata.sh`
+  - `lt-frontend-green-v2` → installs **Liberty Market** via `user-data/green-userdata.sh`
 
 ---
 
-## 🚀 Deployment Steps
+# 🚀 Deployment Steps
 
-1. **Create Target Groups:** `tg-frontend-blue`, `tg-frontend-green`
-2. **Create Launch Templates:**
-   - Blue: install HexaShop
-   - Green: install Liberty Market
-3. **Create Auto Scaling Groups:**
-   - Attach ASGs to respective TGs
-4. **Configure ALB Listener:**
-   - Initially routes traffic to TG-Blue
-5. **Deploy Green Version:**
-   - ASG-Green launches instances
+1. **Create Target Groups**
+   - `tg-frontend-blue`
+   - `tg-frontend-green`
+
+2. **Create Launch Templates**
+   - Blue → installs HexaShop (`blue-userdata.sh`)
+   - Green → installs Liberty Market (`green-userdata.sh`)
+
+3. **Create Auto Scaling Groups**
+   - Attach `asg-frontend-blue` to `tg-frontend-blue`
+   - Attach `asg-frontend-green` to `tg-frontend-green`
+
+4. **Configure ALB Listener**
+   - Initially route traffic to **TG-Blue**
+
+5. **Deploy Green Version**
+   - Launch instances via `asg-frontend-green`
    - Validate health checks
-6. **Switch Traffic:**
-   - Update ALB listener to TG-Green
-7. **Rollback (if needed):**
-   - Revert listener to TG-Blue
-8. **Decommission Blue:**
-   - Scale down or delete ASG-Blue
+
+6. **Switch Traffic**
+   - Update ALB listener to forward traffic to **TG-Green**
+
+7. **Rollback (if needed)**
+   - Revert ALB listener back to **TG-Blue**
+
+8. **Decommission Blue**
+   - Scale down or delete `asg-frontend-blue`
 
 ---
 
-## ⚠️ Real-Time Anomaly
+# ⚠️ Real-Time Anomaly & Fix
 
-**Issue:** Green instances failed health checks  
-**Cause:** Security Group blocked ALB health probe traffic  
-**Fix:** Updated SG to allow port 80 from ALB → instances became healthy
-
+- **Issue:** Green instances failed health checks  
+- **Cause:** Security Group blocked ALB health probe traffic  
+- **Resolution:** Updated Security Group to allow **port 80** from ALB → instances became healthy
 ---
 
 ## 🔧 Troubleshooting Checklist
