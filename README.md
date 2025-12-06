@@ -14,6 +14,7 @@ This project demonstrates a real-time **Blue-Green Deployment architecture** usi
 ---
 ## Project Folder Structure
 ------------------------
+
 aws-blue-green-deployment/
 │
 ├── README.md
