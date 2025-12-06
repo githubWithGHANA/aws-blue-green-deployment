@@ -14,8 +14,9 @@ This project demonstrates a real-time **Blue-Green Deployment architecture** usi
 ---
 ## Project Folder Structure
 ------------------------
-
+```text
 aws-blue-green-deployment/
+|
 ├── README.md
 ├── architecture.png
 ├── screenshots/
@@ -27,11 +28,11 @@ aws-blue-green-deployment/
 │   ├── blue-green-launch-template.png
 │   ├── target-groups.png
 │   ├── user-data-blue.png
-│   ├── user-data-green.png
+│   └── user-data-green.png
 ├── user-data/
 │   ├── blue-userdata.sh
-│   ├── green-userdata.sh
-
+└── └── green-userdata.sh
+```
 ---
 
 ## 🧱 Architecture Components
